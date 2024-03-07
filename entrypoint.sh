@@ -3,8 +3,8 @@
 # echo "Hello $1"
 # time=$(date)
 # echo "time=$time" >> $GITHUB_OUTPUT
-previous_release_created_at=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/releases/latest" | jq -r '.created_at')
-
+previous_release_created_at=curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/releases/latest" | jq -r '.created_at'
+echo "previous_release_created_at=$previous_release_created" >> $GITHUB_OUTPUT
 # latest_tag=$(git describe --tags)
 
 # previous_tag=$(git describe --tags $(git rev-list --tags --skip=1 --max-count=1))
