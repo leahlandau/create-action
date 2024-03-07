@@ -3,7 +3,7 @@
 # echo "Hello $1"
 # time=$(date)
 # echo "time=$time" >> $GITHUB_OUTPUT
-previous_release_created_at=curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/releases/latest" | jq -r '.created_at'
+previous_release_created_at=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/releases/latest" | jq -r '.created_at')
 echo "previous_release_created_at=$previous_release_created" >> $GITHUB_OUTPUT
 # latest_tag=$(git describe --tags)
 
@@ -22,6 +22,7 @@ echo "previous_release_created_at=$previous_release_created" >> $GITHUB_OUTPUT
 #     assignees=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/issues/$number" | jq -r '.assignees[].login' | xargs)
 
 #     url=$(echo "$row" | jq -r '.html_url')
+
 
 #     assignee_links=""
 
